@@ -25,7 +25,7 @@ func GetLeads(c *fiber.Ctx){
 func GetLead(c *fiber.Ctx){
 	id := c.Params
 	db := database.DBConn
-	car lead lead 
+	var lead Lead 
 	db.Find(&lead,id)
 	c.JSON(lead)
 }
@@ -39,9 +39,19 @@ func NewLead(c *fiber.Ctx){
 	}
 	db.Create(&lead)
 	c.JSON(lead)
-	
+
 }
 
 func DeleteLead(c *fiber.Ctx){
+	id := c.Params("id")
+	db := database.DBConn
 
+	var lead Lead
+	db.First(&lead,id)
+	if lead.Name == ""{
+		c.Status(500).Send("No lead found with ID")
+		return
+	}
+	db.Delete(&lead)
+	c.Send("Lead deleted successfully")
 }
