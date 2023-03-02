@@ -20,7 +20,11 @@ func GetLeads(c *fiber.Ctx){
 }
 
 func GetLead(c *fiber.Ctx){
-
+	id := c.Params
+	db := database.DBConn
+	car lead lead 
+	db.Find(&lead,id)
+	c.JSON(lead)
 }
 
 func NewLead(c *fiber.Ctx){
