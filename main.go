@@ -7,6 +7,8 @@ import (
 	"github.com/jinzhu/gorm"
 	"github.com/yrs147/go-crm/database"
 	"github.com/yrs147/go-crm/lead"
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
 
 func setupRoutes(app *fiber.App) {
